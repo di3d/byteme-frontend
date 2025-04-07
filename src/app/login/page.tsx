@@ -27,8 +27,8 @@ const GoogleLogin = () => {
     try {
       await signInWithPopup(auth, googleProvider);
       setError(""); // Firebase will automatically update context
-    } catch (error: any) {
-      setError("Error logging in with Google: " + error.message);
+    } catch (error) {
+      setError("Error logging in with Google: " + (error instanceof Error ? error.message : "Unknown error"));
     }
   };
 
@@ -36,8 +36,8 @@ const GoogleLogin = () => {
     try {
       await signOut(auth);
       setError(""); // clear any potential error messages on sign out
-    } catch (error: any) {
-      setError("Error signing out: " + error.message);
+    } catch (error) {
+      setError("Error signing out: " + (error instanceof Error ? error.message : "Unknown error"));
     }
   };
 

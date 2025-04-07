@@ -1,18 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import { useEffect } from "react";
 import { useAuth } from "@/app/config/authcontext";
 import Link from "next/link";
-import { Menu, X, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
   DropdownMenuItem,
-  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 
 const navLinks = [
@@ -44,7 +40,7 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const { user, loading } = useAuth();
+  const { user } = useAuth();
 
   useEffect(() => {
     console.log("Firebase User:", user);
