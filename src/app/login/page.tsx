@@ -20,7 +20,7 @@ import {
 import { AlertCircle } from "lucide-react";
 
 const GoogleLogin = () => {
-  const { user, loading } = useAuth(); // ✅ from context
+  const { user, loading } = useAuth(); 
   const [error, setError] = useState<string>("");
 
   const handleGoogleLogin = async () => {

@@ -13,7 +13,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Input } from "@/components/ui/input";
 
-
+import { useAuth } from "../config/authcontext";
 
 export function ComponentCardSkeleton() {
   return (
@@ -55,6 +55,7 @@ const categories: Category[] = [
 ];
 
 export default function PCBuilder() {
+  const { user } = useAuth();
   const [components, setComponents] = useState<Component[]>([]);
   const [selectedParts, setSelectedParts] = useState<
     Record<number, Component | null>
@@ -107,7 +108,7 @@ export default function PCBuilder() {
       const totalCost = calculateTotalPrice();
 
       const payload = {
-        customer_id: currentUserId,
+        customer_id: user.uid,
         name: recommendationName,
         parts_list: selectedParts,
         cost: totalCost,
@@ -178,6 +179,7 @@ export default function PCBuilder() {
   };
 
   return (
+    
     <div className="container mx-auto px-4 py-8  min-h-screen text-white">
       <div className="w-full bg-gradient-to-r from-blue-800 via-purple-800 to-pink-800 py-12 px-6 rounded-xl mb-8">
         <h1 className="text-4xl font-extrabold mb-4">Community PC Builder</h1>
